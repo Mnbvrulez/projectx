@@ -23,7 +23,7 @@ def process_data(data):
     num = 0
     mi = 0
     y = 0
-    this_doesnt_do_anything = 0
+    maxi = 0
 
     #loop
     for x in data:
@@ -34,6 +34,12 @@ def process_data(data):
         else:
             if x < y:
                 y = x
+        if maxi == 0:
+            maxi = x
+        else:
+            if x > maxi:
+                maxi = x
+
 
 
 
@@ -42,6 +48,7 @@ def process_data(data):
     print "Count: %i" % (count)
     print "Sum: %i" % (num)
     print "Minimum Value: %i" % (y)
+    print "Maximum Value: %i" % (maxi)
 
 process_data(data)
 
