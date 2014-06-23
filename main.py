@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-data = [2, 1, 4, 3]
+data = [2, 1, 4, 3, -9, -10, 4, 4, 3,3, -10]
 
 """
 my_values.sort(cmp=my_function)
@@ -18,31 +18,41 @@ fun_average(my_values)
 """
 
 def process_data(data):
-    
+    frequency_map = dict()
     count = 0
-    num = 0
-    mi = 0
-    y = 0
-    maxi = 0
+    sum_data = 0
+    average = 0
+    min_v = None
+    maxi = None
 
     #loop
     for x in data:
         count+=1
-        num = x + num
-        if y == 0:
-            y = x
+        sum_data += x
+
+        #Check for minimum
+        if min_v is None:
+            min_v = x
         else:
-            if x < y:
-                y = x
-        if maxi == 0:
+            if x < min_v:
+                min_v = x
+
+        #Check for maximum        
+        if maxi is None:
             maxi = x
         else:
             if x > maxi:
                 maxi = x
-        mi = mi + x
+
+        #count up the fequency
+        if frequency_map.get(x) is None:
+            frequency_map[x] = 1
+        else:
+            frequency_map[x] += 1
+       
 
     
-    mi = mi/count
+    average = sum_data/count
 
 
 
@@ -51,10 +61,15 @@ def process_data(data):
 
     print "<Results>"
     print "Count: %i" % (count)
-    print "Sum: %i" % (num)
-    print "Minimum Value: %i" % (y)
+    print "Sum: %i" % (sum_data)
+    print "Minimum Value: %i" % (min_v)
     print "Maximum Value: %i" % (maxi)
-    print "Average(Mean): %i" % (mi)
+    print "Average(Mean): %i" % (average)
+    print "\n"
+    print "Frequency"
+    for key, value in frequency_map.iteritems():
+        print "Number: %i Frequency: %i" % (key, value)
+
 
 process_data(data)
 
