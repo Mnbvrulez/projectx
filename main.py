@@ -39,6 +39,11 @@ def process_data(data):
         else:
             if x > maxi:
                 maxi = x
+        mi = mi + x
+
+    
+    mi = mi/count
+
 
 
 
@@ -49,6 +54,7 @@ def process_data(data):
     print "Sum: %i" % (num)
     print "Minimum Value: %i" % (y)
     print "Maximum Value: %i" % (maxi)
+    print "Average(Mean): %i" % (mi)
 
 process_data(data)
 
